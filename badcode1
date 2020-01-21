@@ -1,0 +1,26 @@
+// https://wiki.sei.cmu.edu/confluence/display/java/DCL00-J.+Prevent+class+initialization+cycles
+// Violation 1
+// DCL00-J. Prevent class initialization cycles
+
+class A {
+  public static final int a = B.b + 3;
+  // ...
+}
+ 
+class B {
+  public static final int b = A.a + 1;
+  // ...
+}
+
+//https://wiki.sei.cmu.edu/confluence/display/java/DCL00-J.+Prevent+class+initialization+cycles
+// Violation 2
+// DCL00-J. Prevent class initialization cycles
+
+class A {
+  public static int a = B.b();
+  public static int c() { return 2; }
+}
+  
+class B {
+  public static int b() { return A.c(); }
+}
