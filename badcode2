@@ -1,0 +1,8 @@
+// violation 3
+// https://wiki.sei.cmu.edu/confluence/display/java/NUM52-J.+Be+aware+of+numeric+promotion+behavior
+// NUM52-J. Be aware of numeric promotion behavior
+
+int big = 99999999;
+float one = 1.0f;
+// Binary operation, loses precision because of implicit cast
+System.out.println(big * one);
